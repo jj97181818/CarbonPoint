@@ -16,9 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FAQ_Restaurant" />
-        <activity android:name=".FAQ_Game" />
-        <activity android:name=".MessageBoard"></activity>
+        <activity android:name=".FAQRestaurantActivity" />
+        <activity android:name=".FAQGameActivity" />
+        <activity android:name=".MessageBoardActivity" />
+        <activity android:name=".PointActivity" />
+        <activity android:name=".ThisMonthRecordActivity" />
+        <activity android:name=".HistoryRecordActivity"></activity>
     </application>
 
 </manifest>

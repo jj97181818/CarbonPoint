@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoSpecificActivity(View v) {
-        Intent it = new Intent(this, MessageBoard.class);
+        Intent it = new Intent(this, PointActivity.class);
         startActivity(it);
     }
 }

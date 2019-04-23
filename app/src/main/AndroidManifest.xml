@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FAQ_Restaurant" />
-        <activity android:name=".FAQ_Game"></activity>
+        <activity android:name=".FAQ_Game" />
+        <activity android:name=".MessageBoard"></activity>
     </application>
 
 </manifest>

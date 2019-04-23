@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">CarbonPoint</string>
+
+
+    <string name="AboutRestaurant">
+        關於店家
+    </string>
+    <string name="FAQ_Restaurant_1Q">
+        Q: 合作店家有哪些？
+    </string>
+
+    <string name="FAQ_Restaurant_1A">
+        A: 可以在我們的官網上看到所有合作店家。
+    </string>
+
+    <string name="FAQ_Restaurant_2Q">
+        Q: 碳幣能做什麼？
+    </string>
+
+    <string name="FAQ_Restaurant_2A">
+        A: 可以到與我們合作的相關餐廳，可以享有一定優惠。
+    </string>
+
+
+    <string name="AboutGame">
+        關於遊戲
+    </string>
+    <string name="FAQ_Game_1Q">
+        Q: 遊戲的金幣可以做什麼？
+    </string>
+
+    <string name="FAQ_Game_1A">
+        A: 遊戲的金幣可以在遊戲中買水與肥料，種植自己的樹木。
+    </string>
+
+    <string name="FAQ_Game_2Q">
+        Q: 遊戲幣怎麼得到？
+    </string>
+
+    <string name="FAQ_Game_2A">
+        A: 遊戲幣可以到與我們合作的相關餐廳消費，獲得碳幣的同時，也會得到遊戲的金幣。
+    </string>
+
+</resources>

@@ -22,7 +22,8 @@
         <activity android:name=".PointActivity" />
         <activity android:name=".ThisMonthRecordActivity" />
         <activity android:name=".HistoryRecordActivity" />
-        <activity android:name=".NoticeActivity"></activity>
+        <activity android:name=".NoticeActivity" />
+        <activity android:name=".MemberDataActivity"></activity>
     </application>
 
 </manifest>

@@ -41,4 +41,14 @@
         A: 遊戲幣可以到與我們合作的相關餐廳消費，獲得碳幣的同時，也會得到遊戲的金幣。
     </string>
 
+
+    <string name="noticeStore">
+        店家優惠
+    </string>
+    <string name="noticeGame">
+        遊戲公告
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

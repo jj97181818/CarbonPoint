@@ -8,24 +8,26 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NoticeActivity extends AppCompatActivity {
+public class CooperationActivity extends AppCompatActivity {
 
     private ViewPager mVpgContent;
     private TabLayout mTblTitle;
 
-    private StoreFragment storeFragment;
-    private GameFragment gameFragment;
+    private HotFragment hotFragment;
+    private NewFragment newFragment;
+    private NearFragment nearFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notice);
+        setContentView(R.layout.activity_cooperation);
 
-        storeFragment = new StoreFragment();
-        gameFragment = new GameFragment();
+        hotFragment = new HotFragment();
+        newFragment = new NewFragment();
+        nearFragment = new NearFragment();
 
-        mVpgContent = (ViewPager) findViewById(R.id.vpgContent);
-        mTblTitle = (TabLayout) findViewById(R.id.tblTitle);
+        mVpgContent = (ViewPager) findViewById(R.id.mVpgContent);
+        mTblTitle = (TabLayout) findViewById(R.id.mTblTitle);
 
         mVpgContent.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Nullable
@@ -34,10 +36,13 @@ public class NoticeActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (position) {
                     case 0:
-                        fragment = storeFragment;
+                        fragment = nearFragment;
                         break;
                     case 1:
-                        fragment = gameFragment;
+                        fragment = newFragment;
+                        break;
+                    case 2:
+                        fragment = hotFragment;
                         break;
                 }
                 return fragment;
@@ -45,7 +50,7 @@ public class NoticeActivity extends AppCompatActivity {
 
             @Override
             public int getCount() {
-                return 2;
+                return 3;
             }
 
             @Nullable
@@ -54,16 +59,21 @@ public class NoticeActivity extends AppCompatActivity {
                 String title = null;
                 switch (position) {
                     case 0:
-                        title = getString(R.string.noticeStore);
+                        title = getString(R.string.cooperationNear);
                         break;
                     case 1:
-                        title = getString(R.string.noticeGame);
+                        title = getString(R.string.cooperationNew);
+                        break;
+                    case 2:
+                        title = getString(R.string.cooperationHot);
                         break;
                 }
                 return title;
             }
         });
 
+
         mTblTitle.setupWithViewPager(mVpgContent);
+
     }
 }

@@ -23,7 +23,10 @@
         <activity android:name=".ThisMonthRecordActivity" />
         <activity android:name=".HistoryRecordActivity" />
         <activity android:name=".NoticeActivity" />
-        <activity android:name=".MemberDataActivity"></activity>
+        <activity android:name=".MemberDataActivity" />
+        <activity android:name=".VehicleActivity" />
+        <activity android:name=".VehicleBarcodeActivity" />
+        <activity android:name=".CooperationActivity"></activity>
     </application>
 
 </manifest>

@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoSpecificActivity(View v) {
-        Intent it = new Intent(this, NoticeActivity.class);
+        Intent it = new Intent(this, CooperationActivity.class);
         startActivity(it);
     }
 }

@@ -26,7 +26,12 @@
         <activity android:name=".MemberDataActivity" />
         <activity android:name=".VehicleActivity" />
         <activity android:name=".VehicleBarcodeActivity" />
-        <activity android:name=".CooperationActivity"></activity>
+        <activity android:name=".CooperationActivity" />
+        <activity
+            android:name=".test"
+            android:label="@string/title_activity_test" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

@@ -13,9 +13,7 @@
         android:title="@string/title_notifications" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_member"
         android:icon="@drawable/profile"
         android:title="@string/title_member" />
-
-
 </menu>

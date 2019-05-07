@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
     private View v;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -21,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     return true;
-                case R.id.navigation_dashboard:
-                    gotoMemberActivity(v);
-                    return true;
                 case R.id.navigation_notifications:
                     gotoNoticeActivity(v);
+                    return true;
+                case R.id.navigation_member:
+                    gotoMemberActivity(v);
                     return true;
             }
             return false;

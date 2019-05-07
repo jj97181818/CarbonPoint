@@ -1,12 +1,17 @@
 package me.jj97181818.carbonpoint;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 
 public class NoticeActivity extends AppCompatActivity {
 
@@ -15,6 +20,26 @@ public class NoticeActivity extends AppCompatActivity {
 
     private StoreFragment storeFragment;
     private GameFragment gameFragment;
+
+    private View v;
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    gotoMainActivity(v);
+                    return true;
+                case R.id.navigation_notifications:
+                    return true;
+                case R.id.navigation_member:
+                    gotoMemberActivity(v);
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,5 +90,17 @@ public class NoticeActivity extends AppCompatActivity {
         });
 
         mTblTitle.setupWithViewPager(mVpgContent);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    public void gotoMainActivity(View v) {
+        Intent it = new Intent(this, MainActivity.class);
+        startActivity(it);
+    }
+    public void gotoMemberActivity(View v) {
+        Intent it = new Intent(this, MemberDataActivity.class);
+        startActivity(it);
     }
 }

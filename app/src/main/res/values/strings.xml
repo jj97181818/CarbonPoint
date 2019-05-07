@@ -46,7 +46,7 @@
         店家優惠
     </string>
     <string name="noticeGame">
-        遊戲公告
+        店家介紹
     </string>
 
     <string name="cooperationNear">
@@ -65,5 +65,6 @@
     <string name="title_activity_test">test</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_member">Member</string>
     <string name="title_notifications">Notifications</string>
 </resources>

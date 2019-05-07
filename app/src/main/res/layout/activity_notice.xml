@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".NoticeActivity">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="合作門市"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.v4.view.ViewPager
         android:id="@+id/vpgContent"
         android:layout_width="0dp"
@@ -34,8 +21,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/vpgContent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/vpgContent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
+        tools:layout_editor_absoluteY="4dp">
 
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"

@@ -32,7 +32,9 @@
             android:label="@string/title_activity_test" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".GiftActivity"></activity>
+        <activity android:name=".GiftActivity" />
+        <activity android:name=".MyGiftActivity" />
+        <activity android:name=".MemberActivity"></activity>
     </application>
 
 </manifest>

@@ -100,7 +100,8 @@ public class NoticeActivity extends AppCompatActivity {
         startActivity(it);
     }
     public void gotoMemberActivity(View v) {
-        Intent it = new Intent(this, MemberDataActivity.class);
+        Intent it = new Intent(this, MemberActivity.class);
         startActivity(it);
     }
+
 }

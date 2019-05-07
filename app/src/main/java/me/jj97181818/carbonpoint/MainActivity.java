@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.lang.reflect.Member;
+
 public class MainActivity extends AppCompatActivity {
 
     private View v;
@@ -41,11 +43,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoMemberActivity(View v) {
-        Intent it = new Intent(this, MemberDataActivity.class);
+        Intent it = new Intent(this, MemberActivity.class);
         startActivity(it);
     }
     public void gotoNoticeActivity(View v) {
         Intent it = new Intent(this, NoticeActivity.class);
         startActivity(it);
     }
+    public void gotoGiftAcitvity(View v) {
+        Intent it = new Intent(this, GiftActivity.class);
+        startActivity(it);
+    }
+    public void gotoMyGiftAcitvity(View v) {
+        Intent it = new Intent(this, MyGiftActivity.class);
+        startActivity(it);
+    }
+
 }

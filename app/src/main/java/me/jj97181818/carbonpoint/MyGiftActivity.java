@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,17 +53,13 @@ public class MyGiftActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //list
-        ArrayList<String> myDataset = new ArrayList<>();
+        ArrayList<Pair<Integer, String>> myDataset = new ArrayList<>();
 
-//        for(int i = 0; i < 10; i++){
-//            myDataset.add(Integer.toString(i));
-//        }
-        myDataset.add("綠色能量沙拉\n" + "30 點特價 210 元");
-        myDataset.add("中東香料漢堡 \n" + "20 點特價 290 元 ");
-        myDataset.add("特級黑松露斑馬義大利麵 \n" + "25 點特價 320 元 ");
-        myDataset.add("中東香料漢堡 \n" + "20 點特價 290 元 ");
-        myDataset.add("中東香料漢堡 \n" + "20 點特價 290 元 ");
-        myDataset.add("中東香料漢堡 \n" + "20 點特價 290 元 ");
+        myDataset.add(new Pair<>(R.drawable.salad, "任一沙拉\n" + "30 點特價 210 元"));
+        myDataset.add(new Pair<>(R.drawable.hamburger, "中東香料漢堡 \n" + "20 點特價 290 元 "));
+        myDataset.add(new Pair<>(R.drawable.pasta, "野菇蒙太奇義大利麵\n" + "25 點特價 320 元 "));
+        myDataset.add(new Pair<>(R.drawable.sandwich, "元氣雙層蔬菜三明治 \n" + "20 點特價 290 元 "));
+        myDataset.add(new Pair<>(R.drawable.drink, "任一手打飲品 \n" + "20 點享八折優惠 "));
 
         mAdapter = new MyAdapter(myDataset);
         mRecyclerView = (RecyclerView) findViewById(R.id.list_view);
@@ -72,17 +70,19 @@ public class MyGiftActivity extends AppCompatActivity {
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-        private List<String> mData;
+        private List<Pair<Integer, String>> mData;
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public TextView mTextView;
+            public ImageView mImageView;
             public ViewHolder(View v) {
                 super(v);
                 mTextView = (TextView) v.findViewById(R.id.info_text);
+                mImageView = (ImageView) v.findViewById(R.id.info_img);
             }
         }
 
-        public MyAdapter(List<String> data) {
+        public MyAdapter(List<Pair<Integer, String>> data) {
             mData = data;
         }
 
@@ -96,7 +96,8 @@ public class MyGiftActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, final int position) {
-            holder.mTextView.setText(mData.get(position));
+            holder.mImageView.setImageDrawable(getDrawable(mData.get(position).first));
+            holder.mTextView.setText(mData.get(position).second);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/leavespattern"
+    android:background="@drawable/leaves"
     tools:context=".MyGiftActivity">
 
     <TextView
@@ -13,9 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="我的兌換"
+        android:text="我的優惠卷"
         android:textAlignment="center"
-        android:textSize="36sp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"

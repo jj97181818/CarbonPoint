@@ -98,16 +98,16 @@ public class MyGiftActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(MyGiftActivity.this, "可使用的優惠卷", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyGiftActivity.this, "出示優惠碼給店家，即可兌換優惠～", Toast.LENGTH_SHORT).show();
                 }
             });
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    Toast.makeText(MyGiftActivity.this, "第 " + position + " 個被長按了！", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });
+//            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    Toast.makeText(MyGiftActivity.this, "第 " + position + " 個被長按了！", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//            });
         }
 
         @Override

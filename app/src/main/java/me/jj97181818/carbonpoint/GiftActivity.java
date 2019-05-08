@@ -1,8 +1,10 @@
 package me.jj97181818.carbonpoint;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -102,7 +104,13 @@ public class GiftActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(GiftActivity.this, "第 " + position + " 個被選擇了！", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(GiftActivity.this)
+                            .setTitle("通知")
+                            .setIcon(android.R.drawable.ic_menu_info_details)
+                            .setMessage("確定要兌換此優惠卷嗎？")
+                            .setPositiveButton("確定", null)
+                            .setNegativeButton("取消",null)
+                            .show();
                 }
             });
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {

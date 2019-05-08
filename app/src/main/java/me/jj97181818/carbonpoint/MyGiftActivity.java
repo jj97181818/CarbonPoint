@@ -3,6 +3,7 @@ package me.jj97181818.carbonpoint;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -55,11 +56,7 @@ public class MyGiftActivity extends AppCompatActivity {
         //list
         ArrayList<Pair<Integer, String>> myDataset = new ArrayList<>();
 
-        myDataset.add(new Pair<>(R.drawable.salad, "任一沙拉\n" + "30 點特價 210 元"));
-        myDataset.add(new Pair<>(R.drawable.hamburger, "中東香料漢堡 \n" + "20 點特價 290 元 "));
-        myDataset.add(new Pair<>(R.drawable.pasta, "野菇蒙太奇義大利麵\n" + "25 點特價 320 元 "));
-        myDataset.add(new Pair<>(R.drawable.sandwich, "元氣雙層蔬菜三明治 \n" + "20 點特價 290 元 "));
-        myDataset.add(new Pair<>(R.drawable.drink, "任一手打飲品 \n" + "20 點享八折優惠 "));
+        myDataset.add(new Pair<>(R.drawable.pasta, "野菇蒙太奇義大利麵\n" + "25 點特價 320 元\n\n" + "優惠碼：EOSAV3498\n" + "使用期限：108.8.15"));
 
         mAdapter = new MyAdapter(myDataset);
         mRecyclerView = (RecyclerView) findViewById(R.id.list_view);
@@ -101,7 +98,7 @@ public class MyGiftActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(MyGiftActivity.this, "第 " + position + " 個被選擇了！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyGiftActivity.this, "可使用的優惠卷", Toast.LENGTH_SHORT).show();
                 }
             });
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {

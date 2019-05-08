@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/leavespattern"
+    android:background="@drawable/restaurant"
     tools:context=".MainActivity">
 
     <ImageView
@@ -17,23 +17,11 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tree" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="73dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sprout" />
+        app:layout_constraintVertical_bias="0.416"
+        app:srcCompat="@drawable/mountain" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -44,9 +32,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452"
         app:srcCompat="@drawable/qrcode" />
 
     <android.support.design.widget.BottomNavigationView
@@ -62,29 +52,39 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_width="84dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/shopping"
         android:onClick="gotoGiftAcitvity"
-        android:text="兌換活動"
+        android:text="兌換"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.968" />
+        app:layout_constraintVertical_bias="0.958" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="102dp"
+        android:layout_height="83dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/coupon"
         android:onClick="gotoMyGiftAcitvity"
-        android:text="我的兌換"
+        android:text="優惠卷"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.626"
         app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintTop_toTopOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.55" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package me.jj97181818.carbonpoint;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -55,7 +56,7 @@ public class MemberActivity extends AppCompatActivity {
         //list
         ArrayList<Pair<Integer, String>> myDataset = new ArrayList<>();
 
-        myDataset.add(new Pair<>(R.drawable., "～會員資料～"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "～會員資料～"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "基本資料修改"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "積分排名"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "點數紀錄"));
@@ -109,6 +110,7 @@ public class MemberActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent it;
+                    TextView mTextView = (TextView) v.findViewById(R.id.food_text);
                     switch(position) {
                         case 0:
                             break;

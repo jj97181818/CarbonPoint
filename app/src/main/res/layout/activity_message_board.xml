@@ -132,7 +132,7 @@
         <EditText
             android:id="@+id/editText7"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="請輸入內容"
@@ -154,5 +154,21 @@
             android:layout_marginRight="50dp"
             android:text="送出" />
     </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/navigation" />
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

@@ -5,12 +5,26 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberActivity extends AppCompatActivity {
 
     private View v;
+    private MemberActivity.MyAdapter myAdapter;
+    private RecyclerView myRecyclerView;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -37,7 +51,131 @@ public class MemberActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //list
+        ArrayList<Pair<Integer, String>> myDataset = new ArrayList<>();
+
+        myDataset.add(new Pair<>(R.drawable., "～會員資料～"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "基本資料修改"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "積分排名"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "點數紀錄"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "我的優惠卷"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "～載具設定～"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "手機條碼設定"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "～常見問題～"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "店家"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "～聯絡我們～"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "官網"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "留言板"));
+
+        myAdapter = new MemberActivity.MyAdapter(myDataset);
+        myRecyclerView = (RecyclerView) findViewById(R.id.listviewMemberData);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myRecyclerView.setLayoutManager(layoutManager);
+        myRecyclerView.setAdapter(myAdapter);
     }
+
+    public class MyAdapter extends RecyclerView.Adapter<MemberActivity.MyAdapter.ViewHolder> {
+        private List<Pair<Integer, String>> mData;
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            public TextView mTextView;
+            public ImageView mImageView;
+            public ViewHolder(View v) {
+                super(v);
+                mTextView = (TextView) v.findViewById(R.id.food_text);
+                mImageView = (ImageView) v.findViewById(R.id.food_img);
+            }
+        }
+
+        public MyAdapter(List<Pair<Integer, String>> data) {
+            mData = data;
+        }
+
+        @Override
+        public MemberActivity.MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.memberlayout, parent, false);
+            MemberActivity.MyAdapter.ViewHolder vh = new MemberActivity.MyAdapter.ViewHolder(v);
+            return vh;
+        }
+
+        @Override
+        public void onBindViewHolder(MemberActivity.MyAdapter.ViewHolder holder, final int position) {
+            holder.mImageView.setImageDrawable(getDrawable(mData.get(position).first));
+            holder.mTextView.setText(mData.get(position).second);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent it;
+                    switch(position) {
+                        case 0:
+                            break;
+                        case 1:
+                            it = new Intent(MemberActivity.this, MemberDataActivity.class);
+                            startActivity(it);
+                            break;
+                        case 2:
+                            it = new Intent(MemberActivity.this, MainActivity.class);
+                            startActivity(it);
+                            break;
+                        case 3:
+                            it = new Intent(MemberActivity.this, PointActivity.class);
+                            startActivity(it);
+                            break;
+                        case 4:
+                            it = new Intent(MemberActivity.this, MyGiftActivity.class);
+                            startActivity(it);
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            it = new Intent(MemberActivity.this, VehicleActivity.class);
+                            startActivity(it);
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            it = new Intent(MemberActivity.this, FAQRestaurantActivity.class);
+                            startActivity(it);
+                            break;
+                        case 9:
+                            break;
+                        case 10:
+                            it = new Intent(MemberActivity.this, MainActivity.class);
+                            startActivity(it);
+                            break;
+                        case 11:
+                            it = new Intent(MemberActivity.this, MessageBoardActivity.class);
+                            startActivity(it);
+                            break;
+                        default:
+                    }
+                }
+//
+//                public void onClick(DialogInterface dialog, int which) {
+//                    if (which == DialogInterface.BUTTON_POSITIVE) {
+//                        TextView pointView = findViewById(R.id.textView16);
+//                        pointView.setText("55");
+//                    }
+//                }
+            });
+//            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    Toast.makeText(MemberActivity.this, "第 " + position + " 個被長按了！", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return mData.size();
+        }
+    }
+
 
     public void gotoMainActivity(View v) {
         Intent it = new Intent(this, MainActivity.class);
@@ -47,4 +185,5 @@ public class MemberActivity extends AppCompatActivity {
         Intent it = new Intent(this, NoticeActivity.class);
         startActivity(it);
     }
+
 }

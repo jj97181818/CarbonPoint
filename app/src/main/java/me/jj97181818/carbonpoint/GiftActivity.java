@@ -25,6 +25,7 @@ public class GiftActivity extends AppCompatActivity {
     private View v;
     private GiftActivity.MyAdapter myAdapter;
     private RecyclerView myRecyclerView;
+    private int point = 80;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -111,8 +112,17 @@ public class GiftActivity extends AppCompatActivity {
                             .setPositiveButton("確定", null)
                             .setNegativeButton("取消",null)
                             .show();
-
+                            TextView pointView = findViewById(R.id.textView16);
+                            pointView.setText("55");
                 }
+
+//
+//                public void onClick(DialogInterface dialog, int which) {
+//                    if (which == DialogInterface.BUTTON_POSITIVE) {
+//                        TextView pointView = findViewById(R.id.textView16);
+//                        pointView.setText("55");
+//                    }
+//                }
             });
 //            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
 //                @Override

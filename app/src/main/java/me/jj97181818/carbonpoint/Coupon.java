@@ -20,10 +20,10 @@ public class Coupon {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < 10; i++) {
-            int number = random.nextInt() * 36;
+            int number = random.nextInt(36);
 
             if (number > 9) {
-                result.append(String.valueOf(number));
+                result.append(number);
             } else {
                 result.append((char)(number + 65));
             }

@@ -56,17 +56,16 @@ public class MemberActivity extends AppCompatActivity {
         //list
         ArrayList<Pair<Integer, String>> myDataset = new ArrayList<>();
 
-        myDataset.add(new Pair<>(R.drawable.rightarrow, "～會員資料～"));
+        myDataset.add(new Pair<>(R.drawable.transparent, "-會員-"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "基本資料修改"));
-        myDataset.add(new Pair<>(R.drawable.rightarrow, "積分排名"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "點數紀錄"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "我的優惠卷"));
-        myDataset.add(new Pair<>(R.drawable.rightarrow, "～載具設定～"));
+        myDataset.add(new Pair<>(R.drawable.rightarrow, "優惠卷商店"));
+        myDataset.add(new Pair<>(R.drawable.transparent, "-載具設定-"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "手機條碼設定"));
-        myDataset.add(new Pair<>(R.drawable.rightarrow, "～常見問題～"));
+        myDataset.add(new Pair<>(R.drawable.transparent, "-常見問題-"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "店家"));
-        myDataset.add(new Pair<>(R.drawable.rightarrow, "～聯絡我們～"));
-        myDataset.add(new Pair<>(R.drawable.rightarrow, "官網"));
+        myDataset.add(new Pair<>(R.drawable.transparent, "-聯絡我們-"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "留言板"));
 
         myAdapter = new MemberActivity.MyAdapter(myDataset);
@@ -119,15 +118,15 @@ public class MemberActivity extends AppCompatActivity {
                             startActivity(it);
                             break;
                         case 2:
-                            it = new Intent(MemberActivity.this, MainActivity.class);
-                            startActivity(it);
-                            break;
-                        case 3:
                             it = new Intent(MemberActivity.this, PointActivity.class);
                             startActivity(it);
                             break;
-                        case 4:
+                        case 3:
                             it = new Intent(MemberActivity.this, MyGiftActivity.class);
+                            startActivity(it);
+                            break;
+                        case 4:
+                            it = new Intent(MemberActivity.this, GiftActivity.class);
                             startActivity(it);
                             break;
                         case 5:
@@ -145,10 +144,6 @@ public class MemberActivity extends AppCompatActivity {
                         case 9:
                             break;
                         case 10:
-                            it = new Intent(MemberActivity.this, MainActivity.class);
-                            startActivity(it);
-                            break;
-                        case 11:
                             it = new Intent(MemberActivity.this, MessageBoardActivity.class);
                             startActivity(it);
                             break;

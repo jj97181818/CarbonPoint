@@ -5,17 +5,18 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="V and F"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".FAQRestaurantActivity" />
         <activity android:name=".FAQGameActivity" />
         <activity android:name=".MessageBoardActivity" />
@@ -30,7 +31,6 @@
         <activity
             android:name=".test"
             android:label="@string/title_activity_test" />
-        <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".GiftActivity" />
         <activity android:name=".MyGiftActivity" />

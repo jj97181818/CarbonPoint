@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,10 +113,15 @@ public class GiftActivity extends AppCompatActivity {
                             .setMessage("確定要兌換此優惠卷嗎？")
                             .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    point -= mData.get(position).point;
+                                    int couponPoint = mData.get(position).point;
 
-                                    TextView pointView = findViewById(R.id.textView16);
-                                    pointView.setText(String.valueOf(point));
+                                    if (point < couponPoint) {
+                                        Toast.makeText(GiftActivity.this, "點數不夠囉！", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        point -= couponPoint;
+                                        TextView pointView = findViewById(R.id.textView16);
+                                        pointView.setText(String.valueOf(point));
+                                    }
                                 }
                             })
                             .setNegativeButton("取消",null)

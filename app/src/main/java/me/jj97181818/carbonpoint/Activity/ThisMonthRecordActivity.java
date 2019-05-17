@@ -1,7 +1,9 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import me.jj97181818.carbonpoint.R;
 
 public class ThisMonthRecordActivity extends AppCompatActivity {
 

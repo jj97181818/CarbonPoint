@@ -1,4 +1,4 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-public class PointActivity extends AppCompatActivity {
+import me.jj97181818.carbonpoint.R;
+
+public class MessageBoardActivity extends AppCompatActivity {
     private View v;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,7 +35,7 @@ public class PointActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_point);
+        setContentView(R.layout.activity_message_board);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

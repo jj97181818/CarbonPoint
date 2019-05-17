@@ -1,4 +1,4 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-public class FAQRestaurantActivity extends AppCompatActivity {
+import me.jj97181818.carbonpoint.R;
+
+public class VehicleActivity extends AppCompatActivity {
     private View v;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,10 +35,16 @@ public class FAQRestaurantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_faq__restaurant);
+        setContentView(R.layout.activity_vehicle);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+
+    public void gotoVehicleBarcodeActivity(View v) {
+        Intent it = new Intent(this, VehicleBarcodeActivity.class);
+        startActivity(it);
     }
 
     public void gotoMainActivity(View v) {
@@ -51,4 +59,5 @@ public class FAQRestaurantActivity extends AppCompatActivity {
         Intent it = new Intent(this, MemberActivity.class);
         startActivity(it);
     }
+
 }

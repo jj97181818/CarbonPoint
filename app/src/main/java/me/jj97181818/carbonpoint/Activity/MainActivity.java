@@ -1,4 +1,4 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-public class VehicleActivity extends AppCompatActivity {
+import me.jj97181818.carbonpoint.R;
+
+public class MainActivity extends AppCompatActivity {
+
     private View v;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -17,7 +20,6 @@ public class VehicleActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    gotoMainActivity(v);
                     return true;
                 case R.id.navigation_notifications:
                     gotoNoticeActivity(v);
@@ -33,28 +35,26 @@ public class VehicleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vehicle);
+        setContentView(R.layout.activity_main);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-
-    public void gotoVehicleBarcodeActivity(View v) {
-        Intent it = new Intent(this, VehicleBarcodeActivity.class);
-        startActivity(it);
-    }
-
-    public void gotoMainActivity(View v) {
-        Intent it = new Intent(this, MainActivity.class);
+    public void gotoMemberActivity(View v) {
+        Intent it = new Intent(this, MemberActivity.class);
         startActivity(it);
     }
     public void gotoNoticeActivity(View v) {
         Intent it = new Intent(this, NoticeActivity.class);
         startActivity(it);
     }
-    public void gotoMemberActivity(View v) {
-        Intent it = new Intent(this, MemberActivity.class);
+    public void gotoGiftAcitvity(View v) {
+        Intent it = new Intent(this, GiftActivity.class);
+        startActivity(it);
+    }
+    public void gotoMyGiftAcitvity(View v) {
+        Intent it = new Intent(this, MyGiftActivity.class);
         startActivity(it);
     }
 

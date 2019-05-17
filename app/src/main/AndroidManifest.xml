@@ -9,32 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".FAQRestaurantActivity" />
-        <activity android:name=".FAQGameActivity" />
-        <activity android:name=".MessageBoardActivity" />
-        <activity android:name=".PointActivity" />
-        <activity android:name=".ThisMonthRecordActivity" />
-        <activity android:name=".HistoryRecordActivity" />
-        <activity android:name=".NoticeActivity" />
-        <activity android:name=".MemberDataActivity" />
-        <activity android:name=".VehicleActivity" />
-        <activity android:name=".VehicleBarcodeActivity" />
-        <activity android:name=".CooperationActivity" />
+        <activity android:name=".Activity.MainActivity"/>
+        <activity android:name=".Activity.FAQRestaurantActivity" />
+        <activity android:name=".Activity.FAQGameActivity" />
+        <activity android:name=".Activity.MessageBoardActivity" />
+        <activity android:name=".Activity.PointActivity" />
+        <activity android:name=".Activity.ThisMonthRecordActivity" />
+        <activity android:name=".Activity.HistoryRecordActivity" />
+        <activity android:name=".Activity.NoticeActivity" />
+        <activity android:name=".Activity.MemberDataActivity" />
+        <activity android:name=".Activity.VehicleActivity" />
+        <activity android:name=".Activity.VehicleBarcodeActivity" />
+        <activity android:name=".Activity.CooperationActivity" />
         <activity
             android:name=".test"
             android:label="@string/title_activity_test" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".GiftActivity" />
-        <activity android:name=".MyGiftActivity" />
-        <activity android:name=".MemberActivity"></activity>
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.GiftActivity" />
+        <activity android:name=".Activity.MyGiftActivity" />
+        <activity android:name=".Activity.MemberActivity"></activity>
     </application>
 
 </manifest>

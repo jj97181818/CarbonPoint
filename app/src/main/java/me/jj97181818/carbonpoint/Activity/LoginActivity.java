@@ -1,73 +1,77 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import me.jj97181818.carbonpoint.SqliteHelper;
+import me.jj97181818.carbonpoint.User;
 
-public class RegisterActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    EditText editTextUserName;
     EditText editTextEmail;
     EditText editTextPassword;
 
-    TextInputLayout textInputLayoutUserName;
     TextInputLayout textInputLayoutEmail;
     TextInputLayout textInputLayoutPassword;
 
-    Button buttonRegister;
+    Button buttonLogin;
 
     SqliteHelper sqliteHelper;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(me.jj97181818.carbonpoint.R.layout.activity_register);
+        setContentView(me.jj97181818.carbonpoint.R.layout.activity_login);
         sqliteHelper = new SqliteHelper(this);
-        initTextViewLogin();
+        initCreateAccountTextView();
         initViews();
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (validate()) {
-                    String UserName = editTextUserName.getText().toString();
+
                     String Email = editTextEmail.getText().toString();
                     String Password = editTextPassword.getText().toString();
 
-                    if (!sqliteHelper.isEmailExists(Email)) {
+                    User currentUser = sqliteHelper.Authenticate(new User(null, null, Email, Password));
 
-                        sqliteHelper.addUser(new User(null, UserName, Email, Password));
-                        Snackbar.make(buttonRegister, "User created successfully! Please Login ", Snackbar.LENGTH_LONG).show();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                finish();
-                            }
-                        }, Snackbar.LENGTH_LONG);
-                    }else {
+                    if (currentUser != null) {
+                        Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
 
-                        Snackbar.make(buttonRegister, "User already exists with same email ", Snackbar.LENGTH_LONG).show();
+                        Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+
+                        Snackbar.make(buttonLogin, "Failed to log in , please try again", Snackbar.LENGTH_LONG).show();
+
                     }
-
-
                 }
             }
         });
+
+
     }
 
-    private void initTextViewLogin() {
-        TextView textViewLogin = (TextView) findViewById(me.jj97181818.carbonpoint.R.id.textViewLogin);
-        textViewLogin.setOnClickListener(new View.OnClickListener() {
+    private void initCreateAccountTextView() {
+        TextView textViewCreateAccount = (TextView) findViewById(me.jj97181818.carbonpoint.R.id.textViewCreateAccount);
+        textViewCreateAccount.setText(fromHtml("<font color='#ffffff'>I don't have account yet. </font><font color='#00574B'>create one</font>"));
+        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -75,36 +79,28 @@ public class RegisterActivity extends AppCompatActivity {
     private void initViews() {
         editTextEmail = (EditText) findViewById(me.jj97181818.carbonpoint.R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(me.jj97181818.carbonpoint.R.id.editTextPassword);
-        editTextUserName = (EditText) findViewById(me.jj97181818.carbonpoint.R.id.editTextUserName);
         textInputLayoutEmail = (TextInputLayout) findViewById(me.jj97181818.carbonpoint.R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(me.jj97181818.carbonpoint.R.id.textInputLayoutPassword);
-        textInputLayoutUserName = (TextInputLayout) findViewById(me.jj97181818.carbonpoint.R.id.textInputLayoutUserName);
-        buttonRegister = (Button) findViewById(me.jj97181818.carbonpoint.R.id.buttonRegister);
+        buttonLogin = (Button) findViewById(me.jj97181818.carbonpoint.R.id.buttonLogin);
 
     }
 
+    @SuppressWarnings("deprecation")
+    public static Spanned fromHtml(String html) {
+        Spanned result;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            result = Html.fromHtml(html);
+        }
+        return result;
+    }
 
     public boolean validate() {
         boolean valid = false;
 
-
-        String UserName = editTextUserName.getText().toString();
         String Email = editTextEmail.getText().toString();
         String Password = editTextPassword.getText().toString();
-
-        if (UserName.isEmpty()) {
-            valid = false;
-            textInputLayoutUserName.setError("Please enter valid username!");
-        } else {
-            if (UserName.length() > 5) {
-                valid = true;
-                textInputLayoutUserName.setError(null);
-            } else {
-                valid = false;
-                textInputLayoutUserName.setError("Username is to short!");
-            }
-        }
-
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
             valid = false;
@@ -127,7 +123,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
 
-
         return valid;
     }
+
+
 }

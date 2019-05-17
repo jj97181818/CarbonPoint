@@ -1,6 +1,5 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,16 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import me.jj97181818.carbonpoint.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NearFragment.OnFragmentInteractionListener} interface
+ * {@link HotFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NearFragment#newInstance} factory method to
+ * Use the {@link HotFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NearFragment extends Fragment {
+public class HotFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +30,7 @@ public class NearFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public NearFragment() {
+    public HotFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +40,11 @@ public class NearFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NearFragment.
+     * @return A new instance of fragment HotFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NearFragment newInstance(String param1, String param2) {
-        NearFragment fragment = new NearFragment();
+    public static HotFragment newInstance(String param1, String param2) {
+        HotFragment fragment = new HotFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +65,7 @@ public class NearFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_near, container, false);
+        return inflater.inflate(R.layout.fragment_hot, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -73,6 +74,8 @@ public class NearFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

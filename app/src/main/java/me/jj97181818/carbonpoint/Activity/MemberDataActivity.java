@@ -1,4 +1,4 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MessageBoardActivity extends AppCompatActivity {
+import me.jj97181818.carbonpoint.R;
+
+public class MemberDataActivity extends AppCompatActivity {
     private View v;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -23,7 +25,6 @@ public class MessageBoardActivity extends AppCompatActivity {
                     gotoNoticeActivity(v);
                     return true;
                 case R.id.navigation_member:
-                    gotoMemberActivity(v);
                     return true;
             }
             return false;
@@ -33,7 +34,7 @@ public class MessageBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message_board);
+        setContentView(R.layout.activity_member_data);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -45,10 +46,6 @@ public class MessageBoardActivity extends AppCompatActivity {
     }
     public void gotoNoticeActivity(View v) {
         Intent it = new Intent(this, NoticeActivity.class);
-        startActivity(it);
-    }
-    public void gotoMemberActivity(View v) {
-        Intent it = new Intent(this, MemberActivity.class);
         startActivity(it);
     }
 }

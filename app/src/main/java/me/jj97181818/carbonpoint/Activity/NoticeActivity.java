@@ -1,4 +1,4 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -12,6 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+
+import me.jj97181818.carbonpoint.Fragment.GameFragment;
+import me.jj97181818.carbonpoint.R;
+import me.jj97181818.carbonpoint.Fragment.StoreFragment;
 
 public class NoticeActivity extends AppCompatActivity {
 

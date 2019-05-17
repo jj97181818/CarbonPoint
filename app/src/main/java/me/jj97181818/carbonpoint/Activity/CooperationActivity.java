@@ -1,4 +1,4 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -7,6 +7,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import me.jj97181818.carbonpoint.Fragment.HotFragment;
+import me.jj97181818.carbonpoint.Fragment.NearFragment;
+import me.jj97181818.carbonpoint.Fragment.NewFragment;
+import me.jj97181818.carbonpoint.R;
 
 public class CooperationActivity extends AppCompatActivity {
 

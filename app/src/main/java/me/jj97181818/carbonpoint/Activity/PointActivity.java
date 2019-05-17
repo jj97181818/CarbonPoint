@@ -1,4 +1,4 @@
-package me.jj97181818.carbonpoint;
+package me.jj97181818.carbonpoint.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-public class VehicleBarcodeActivity extends AppCompatActivity {
+import me.jj97181818.carbonpoint.R;
+
+public class PointActivity extends AppCompatActivity {
     private View v;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,10 +31,11 @@ public class VehicleBarcodeActivity extends AppCompatActivity {
             return false;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vehicle_barcode);
+        setContentView(R.layout.activity_point);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

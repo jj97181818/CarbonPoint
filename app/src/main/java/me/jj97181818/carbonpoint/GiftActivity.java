@@ -57,15 +57,15 @@ public class GiftActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //list
-        ArrayList<Pair<Integer, String>> myDataset = new ArrayList<>();
+        ArrayList<Coupon> coupons = new ArrayList<>();
 
-        myDataset.add(new Pair<>(R.drawable.salad, "任一沙拉\n" + "30 點特價 210 元"));
-        myDataset.add(new Pair<>(R.drawable.hamburger, "中東香料漢堡 \n" + "20 點特價 290 元 "));
-        myDataset.add(new Pair<>(R.drawable.pasta, "野菇蒙太奇義大利麵\n" + "25 點特價 320 元 "));
-        myDataset.add(new Pair<>(R.drawable.sandwich, "元氣雙層蔬菜三明治 \n" + "20 點特價 290 元 "));
-        myDataset.add(new Pair<>(R.drawable.drink, "任一手打飲品 \n" + "20 點享八折優惠 "));
+        coupons.add(new Coupon("任一沙拉", "30 點特價 210 元", "2019/12/31", R.drawable.salad, 30));
+        coupons.add(new Coupon("中東香料漢堡", "20 點特價 290 元", "2019/12/16", R.drawable.hamburger, 20));
+        coupons.add(new Coupon("野菇蒙太奇義大利麵", "25 點特價 320 元", "2019/10/03", R.drawable.pasta, 25));
+        coupons.add(new Coupon("元氣雙層蔬菜三明治", "20 點特價 190 元", "2019/09/11", R.drawable.sandwich, 20));
+        coupons.add(new Coupon("任一手打飲品", "10 點享八折優惠", "2019/11/23", R.drawable.drink, 10));
 
-        myAdapter = new GiftActivity.MyAdapter(myDataset);
+        myAdapter = new GiftActivity.MyAdapter(coupons);
         myRecyclerView = (RecyclerView) findViewById(R.id.list_view2);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -74,7 +74,7 @@ public class GiftActivity extends AppCompatActivity {
     }
 
     public class MyAdapter extends RecyclerView.Adapter<GiftActivity.MyAdapter.ViewHolder> {
-        private List<Pair<Integer, String>> mData;
+        private List<Coupon> mData;
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public TextView mTextView;
@@ -86,7 +86,7 @@ public class GiftActivity extends AppCompatActivity {
             }
         }
 
-        public MyAdapter(List<Pair<Integer, String>> data) {
+        public MyAdapter(List<Coupon> data) {
             mData = data;
         }
 
@@ -100,8 +100,8 @@ public class GiftActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(GiftActivity.MyAdapter.ViewHolder holder, final int position) {
-            holder.mImageView.setImageDrawable(getDrawable(mData.get(position).first));
-            holder.mTextView.setText(mData.get(position).second);
+            holder.mImageView.setImageDrawable(getDrawable(mData.get(position).image));
+            holder.mTextView.setText(mData.get(position).name + "\n" + mData.get(position).description);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -111,7 +111,8 @@ public class GiftActivity extends AppCompatActivity {
                             .setMessage("確定要兌換此優惠卷嗎？")
                             .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    point -= 10;
+                                    point -= mData.get(position).point;
+
                                     TextView pointView = findViewById(R.id.textView16);
                                     pointView.setText(String.valueOf(point));
                                 }

@@ -111,8 +111,9 @@ public class GiftActivity extends AppCompatActivity {
                             .setMessage("確定要兌換此優惠卷嗎？")
                             .setPositiveButton("確定", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
+                                    point -= 10;
                                     TextView pointView = findViewById(R.id.textView16);
-                                    pointView.setText("55");
+                                    pointView.setText(String.valueOf(point));
                                 }
                             })
                             .setNegativeButton("取消",null)
@@ -127,13 +128,6 @@ public class GiftActivity extends AppCompatActivity {
 //                    }
 //                }
             });
-//            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View v) {
-//                    Toast.makeText(GiftActivity.this, "第 " + position + " 個被長按了！", Toast.LENGTH_SHORT).show();
-//                    return true;
-//                }
-//            });
         }
 
         @Override

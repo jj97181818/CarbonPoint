@@ -158,13 +158,6 @@ public class MemberActivity extends AppCompatActivity {
 //                    }
 //                }
             });
-//            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View v) {
-//                    Toast.makeText(MemberActivity.this, "第 " + position + " 個被長按了！", Toast.LENGTH_SHORT).show();
-//                    return true;
-//                }
-//            });
         }
 
         @Override

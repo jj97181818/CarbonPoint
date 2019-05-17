@@ -1,7 +1,11 @@
 package me.jj97181818.carbonpoint.Activity;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
@@ -9,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +33,8 @@ public class GiftActivity extends AppCompatActivity {
     private GiftActivity.MyAdapter myAdapter;
     private RecyclerView myRecyclerView;
     private int point = 80;
+
+    SQLiteDatabase db;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,6 +73,7 @@ public class GiftActivity extends AppCompatActivity {
         coupons.add(new Coupon("野菇蒙太奇義大利麵", "25 點特價 320 元", "2019/10/03", R.drawable.pasta, 25));
         coupons.add(new Coupon("元氣雙層蔬菜三明治", "20 點特價 190 元", "2019/09/11", R.drawable.sandwich, 20));
         coupons.add(new Coupon("任一手打飲品", "10 點享八折優惠", "2019/11/23", R.drawable.drink, 10));
+        coupons.add(new Coupon("任一手打飲品", "10 點享八折優惠", "2019/11/23", R.drawable.drink, 10));
 
         myAdapter = new GiftActivity.MyAdapter(coupons);
         myRecyclerView = (RecyclerView) findViewById(R.id.list_view2);
@@ -73,6 +81,12 @@ public class GiftActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myRecyclerView.setLayoutManager(layoutManager);
         myRecyclerView.setAdapter(myAdapter);
+
+        //開啟或建立資料庫
+        db = openOrCreateDatabase("couponDB", Context.MODE_PRIVATE, null);
+
+        //如果不存在路線資料表，就建立一個
+        db.execSQL("CREATE TABLE IF NOT EXISTS coupon (name TEXT, description TEXT, date TEXT, image int, point int, code TEXT)");
     }
 
     public class MyAdapter extends RecyclerView.Adapter<GiftActivity.MyAdapter.ViewHolder> {
@@ -121,6 +135,23 @@ public class GiftActivity extends AppCompatActivity {
                                         point -= couponPoint;
                                         TextView pointView = findViewById(R.id.textView16);
                                         pointView.setText(String.valueOf(point));
+
+                                        String name = mData.get(position).name;
+                                        String description = mData.get(position).description;
+                                        String date = mData.get(position).date;
+                                        String image = String.valueOf(mData.get(position).image);
+                                        String point = String.valueOf(mData.get(position).point);
+                                        String code = mData.get(position).code();
+
+                                        ContentValues cv=new ContentValues();
+                                        cv.put("name", name);
+                                        cv.put("description", description);
+                                        cv.put("date", date);
+                                        cv.put("image", image);
+                                        cv.put("point", point);
+                                        cv.put("code", code);
+
+                                        db.insert("coupon", null, cv);
                                     }
                                 }
                             })

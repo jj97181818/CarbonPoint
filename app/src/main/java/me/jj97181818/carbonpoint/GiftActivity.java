@@ -109,11 +109,14 @@ public class GiftActivity extends AppCompatActivity {
                             .setTitle("通知")
                             .setIcon(android.R.drawable.ic_menu_info_details)
                             .setMessage("確定要兌換此優惠卷嗎？")
-                            .setPositiveButton("確定", null)
+                            .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    TextView pointView = findViewById(R.id.textView16);
+                                    pointView.setText("55");
+                                }
+                            })
                             .setNegativeButton("取消",null)
                             .show();
-                            TextView pointView = findViewById(R.id.textView16);
-                            pointView.setText("55");
                 }
 
 //

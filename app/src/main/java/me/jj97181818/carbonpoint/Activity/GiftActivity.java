@@ -88,7 +88,11 @@ public class GiftActivity extends AppCompatActivity {
         //如果不存在路線資料表，就建立一個
         db.execSQL("CREATE TABLE IF NOT EXISTS coupon (name TEXT, description TEXT, date TEXT, image int, point int, code TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS userpoint (point int)");
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         Cursor c = db.rawQuery("SELECT * FROM userpoint", new String[] {});
         if (c.getCount() > 0) {
@@ -105,9 +109,6 @@ public class GiftActivity extends AppCompatActivity {
 
             localpoint = 1000;
         }
-
-
-
     }
 
     public class MyAdapter extends RecyclerView.Adapter<GiftActivity.MyAdapter.ViewHolder> {

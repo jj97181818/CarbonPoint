@@ -63,7 +63,6 @@ public class MemberActivity extends AppCompatActivity {
 
         myDataset.add(new Pair<>(R.drawable.transparent, "-會員-"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "基本資料修改"));
-        myDataset.add(new Pair<>(R.drawable.rightarrow, "點數紀錄"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "我的優惠卷"));
         myDataset.add(new Pair<>(R.drawable.rightarrow, "優惠卷商店"));
         myDataset.add(new Pair<>(R.drawable.transparent, "-載具設定-"));

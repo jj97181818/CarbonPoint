@@ -33,7 +33,7 @@
             app:srcCompat="@drawable/potato" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/thepointtextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

@@ -1,6 +1,10 @@
 package me.jj97181818.carbonpoint.Activity;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +25,8 @@ import java.util.List;
 import me.jj97181818.carbonpoint.R;
 
 public class MemberActivity extends AppCompatActivity {
-
+    private int localpoint;
+    SQLiteDatabase db;
     private View v;
     private MemberActivity.MyAdapter myAdapter;
     private RecyclerView myRecyclerView;
@@ -74,6 +79,31 @@ public class MemberActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myRecyclerView.setLayoutManager(layoutManager);
         myRecyclerView.setAdapter(myAdapter);
+
+        //開啟或建立資料庫
+        db = openOrCreateDatabase("couponDB", Context.MODE_PRIVATE, null);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Cursor c = db.rawQuery("SELECT * FROM userpoint", new String[] {});
+        if (c.getCount() > 0) {
+            c.moveToFirst();			//將指標移至第一筆資料
+            int selectedpoint = c.getInt(0);
+            TextView pointView = findViewById(R.id.thepointtextview);
+            pointView.setText("我的點數： "+ String.valueOf(selectedpoint));
+
+            localpoint = selectedpoint;
+        } else {
+            ContentValues mcv = new ContentValues();
+            mcv.put("point", 1000);
+            db.insert("userpoint", null, mcv);
+
+            localpoint = 1000;
+        }
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MemberActivity.MyAdapter.ViewHolder> {

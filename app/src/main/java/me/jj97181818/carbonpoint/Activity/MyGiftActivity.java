@@ -1,5 +1,6 @@
 package me.jj97181818.carbonpoint.Activity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -30,6 +31,7 @@ public class MyGiftActivity extends AppCompatActivity {
     private MyAdapter mAdapter;
     private RecyclerView mRecyclerView;
 
+    public int localpoint;
     SQLiteDatabase db;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -91,6 +93,27 @@ public class MyGiftActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Cursor c = db.rawQuery("SELECT * FROM userpoint", new String[] {});
+        if (c.getCount() > 0) {
+            c.moveToFirst();			//將指標移至第一筆資料
+            int selectedpoint = c.getInt(0);
+            TextView pointView = findViewById(R.id.textView27);
+            pointView.setText("我的點數： "+ String.valueOf(selectedpoint));
+
+            localpoint = selectedpoint;
+        } else {
+            ContentValues mcv = new ContentValues();
+            mcv.put("point", 1000);
+            db.insert("userpoint", null, mcv);
+
+            localpoint = 1000;
+        }
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {

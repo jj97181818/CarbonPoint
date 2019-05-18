@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +33,7 @@ public class GiftActivity extends AppCompatActivity {
     private View v;
     private GiftActivity.MyAdapter myAdapter;
     private RecyclerView myRecyclerView;
-    private int point = 80;
+    private int localpoint;
 
     SQLiteDatabase db;
 
@@ -55,7 +56,6 @@ public class GiftActivity extends AppCompatActivity {
             return false;
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +87,27 @@ public class GiftActivity extends AppCompatActivity {
 
         //如果不存在路線資料表，就建立一個
         db.execSQL("CREATE TABLE IF NOT EXISTS coupon (name TEXT, description TEXT, date TEXT, image int, point int, code TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS userpoint (point int)");
+
+
+        Cursor c = db.rawQuery("SELECT * FROM userpoint", new String[] {});
+        if (c.getCount() > 0) {
+            c.moveToFirst();			//將指標移至第一筆資料
+            int selectedpoint = c.getInt(0);
+            TextView pointView = findViewById(R.id.textView16);
+            pointView.setText(String.valueOf(selectedpoint));
+
+            localpoint = selectedpoint;
+        } else {
+            ContentValues mcv = new ContentValues();
+            mcv.put("point", 1000);
+            db.insert("userpoint", null, mcv);
+
+            localpoint = 1000;
+        }
+
+
+
     }
 
     public class MyAdapter extends RecyclerView.Adapter<GiftActivity.MyAdapter.ViewHolder> {
@@ -129,13 +150,9 @@ public class GiftActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     int couponPoint = mData.get(position).point;
 
-                                    if (point < couponPoint) {
+                                    if (localpoint < couponPoint) {
                                         Toast.makeText(GiftActivity.this, "點數不夠囉！", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        point -= couponPoint;
-                                        TextView pointView = findViewById(R.id.textView16);
-                                        pointView.setText(String.valueOf(point));
-
                                         String name = mData.get(position).name;
                                         String description = mData.get(position).description;
                                         String date = mData.get(position).date;
@@ -152,6 +169,26 @@ public class GiftActivity extends AppCompatActivity {
                                         cv.put("code", code);
 
                                         db.insert("coupon", null, cv);
+
+
+                                        localpoint -= couponPoint;
+
+                                        ContentValues mcv=new ContentValues();
+                                        mcv.put("point", localpoint);
+
+                                        db.update("userpoint",  mcv, null, null);
+
+
+                                        Cursor c = db.rawQuery("SELECT * FROM userpoint", new String[] {});
+                                        if (c.getCount() > 0) {
+                                            c.moveToFirst();			//將指標移至第一筆資料
+                                        }
+                                        for (int i = 0; i < c.getCount(); i++) {
+                                            int selectedpoint = c.getInt(0);
+                                            c.moveToNext();		//將指標移至下一筆資料
+                                            TextView pointView = findViewById(R.id.textView16);
+                                            pointView.setText(String.valueOf(selectedpoint));
+                                        }
                                     }
                                 }
                             })
